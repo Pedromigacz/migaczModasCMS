@@ -1,0 +1,23 @@
+{
+  "kind": "singleType",
+  "collectionName": "carrossels",
+  "info": {
+    "name": "carrossel"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "imagensDoCarrossel": {
+      "collection": "file",
+      "via": "related",
+      "allowedTypes": [
+        "images"
+      ],
+      "plugin": "upload",
+      "required": true
+    }
+  }
+}
