@@ -1,0 +1,68 @@
+{
+  "kind": "collectionType",
+  "collectionName": "pecas",
+  "info": {
+    "name": "peças",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "titulo": {
+      "type": "string",
+      "required": true
+    },
+    "descricao": {
+      "type": "richtext",
+      "required": true
+    },
+    "preco_em_centavos": {
+      "type": "integer",
+      "required": true
+    },
+    "preco_promocional": {
+      "type": "integer"
+    },
+    "imagens": {
+      "collection": "file",
+      "via": "related",
+      "allowedTypes": [
+        "images"
+      ],
+      "plugin": "upload",
+      "required": true
+    },
+    "cores_disponiveis": {
+      "type": "richtext",
+      "required": false
+    },
+    "tamanhos_disponiveis": {
+      "type": "richtext",
+      "required": true
+    },
+    "altura_da_embalagem_em_cm": {
+      "default": 2,
+      "required": true,
+      "type": "integer"
+    },
+    "largura_da_embalagem_em_cm": {
+      "type": "integer",
+      "required": true,
+      "default": 12,
+      "unique": false
+    },
+    "comprimento_da_embalagem_em_cm": {
+      "type": "integer",
+      "default": 17,
+      "required": true
+    },
+    "peso_em_kg": {
+      "type": "decimal",
+      "default": 0.18,
+      "required": true
+    }
+  }
+}

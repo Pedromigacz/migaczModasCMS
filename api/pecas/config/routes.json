@@ -1,0 +1,52 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/pecas",
+      "handler": "pecas.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/pecas/count",
+      "handler": "pecas.count",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/pecas/:id",
+      "handler": "pecas.findOne",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/pecas",
+      "handler": "pecas.create",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/pecas/:id",
+      "handler": "pecas.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/pecas/:id",
+      "handler": "pecas.delete",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}
