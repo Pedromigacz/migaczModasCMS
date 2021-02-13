@@ -1,0 +1,26 @@
+{
+  "kind": "singleType",
+  "collectionName": "informacoes_de_contatoes",
+  "info": {
+    "name": "Informações de contato"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "Whatsapp": {
+      "type": "string"
+    },
+    "Email": {
+      "type": "string"
+    },
+    "Facebook": {
+      "type": "string"
+    },
+    "Instagram": {
+      "type": "string"
+    }
+  }
+}
