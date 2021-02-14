@@ -1,0 +1,24 @@
+{
+  "kind": "collectionType",
+  "collectionName": "pedidos",
+  "info": {
+    "name": "Pedidos",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "descricao_do_pedido": {
+      "type": "richtext"
+    },
+    "endereco_de_entrega": {
+      "type": "richtext"
+    },
+    "dados_do_comprador": {
+      "type": "richtext"
+    }
+  }
+}
