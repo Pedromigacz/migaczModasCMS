@@ -63,6 +63,23 @@
       "type": "decimal",
       "default": 0.18,
       "required": true
+    },
+    "marca": {
+      "type": "string"
+    },
+    "capa": {
+      "model": "file",
+      "via": "related",
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos"
+      ],
+      "plugin": "upload",
+      "required": false
+    },
+    "categorias": {
+      "type": "text"
     }
   }
 }

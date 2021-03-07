@@ -2,7 +2,8 @@
   "kind": "singleType",
   "collectionName": "informacoes_de_contatoes",
   "info": {
-    "name": "Informações de contato"
+    "name": "Informações de contato",
+    "description": ""
   },
   "options": {
     "increments": true,
@@ -20,6 +21,9 @@
       "type": "string"
     },
     "Instagram": {
+      "type": "string"
+    },
+    "Endereco": {
       "type": "string"
     }
   }
