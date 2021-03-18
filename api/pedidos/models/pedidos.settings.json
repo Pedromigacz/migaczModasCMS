@@ -11,14 +11,14 @@
     "draftAndPublish": true
   },
   "attributes": {
-    "descricao_do_pedido": {
-      "type": "richtext"
+    "pedido": {
+      "type": "text"
     },
-    "endereco_de_entrega": {
-      "type": "richtext"
+    "endereco": {
+      "type": "text"
     },
-    "dados_do_comprador": {
-      "type": "richtext"
+    "preco_total": {
+      "type": "decimal"
     }
   }
 }

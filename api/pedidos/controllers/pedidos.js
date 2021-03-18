@@ -11,7 +11,6 @@ const { parseMultipartData, sanitizeEntity } = require('strapi-utils');
 
 module.exports = {
     async create(ctx) {
-
         // Initial verifications
         if (ctx.is('multipart')) {
             return {
@@ -67,7 +66,7 @@ module.exports = {
         const freightOptions = await axios(config)
         const chosenFreight = freightOptions.data.find(freight => freight.name === ctx.request.body.opcao_de_frete)
 
-        // Query the cartItems
+        // Query the cartItems and mount preference (without freight price)
         let preference = {
             items: dados_do_pedido.map(line => ({
                 title: `${line.titulo} na cor ${line.cor} tamanho ${line.tamanho}`,
@@ -75,14 +74,30 @@ module.exports = {
                 quantity: 1
             })),
         }
+        // Add freight cost to the preference
         preference.items.push({
             title: 'Frete',
             unit_price: Number(chosenFreight.price),
             quantity: 1
         })
+        
+        // Mount order data
+        let strapiPedido = {
+            pedido: preference.items.map(line => `${line.title}     ${(line.unit_price.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'}))}`).join('\n'),
+            endereco: Object.keys(ctx.request.body.endereco_de_entrega).map(key => `${key}:  ${ctx.request.body.endereco_de_entrega[key]}`).join('\n'),
+            preco_total: preference.items.reduce((acum, curr) => acum + curr.unit_price, 0),
+        }
+        
+        // Save order data
+        const createdPedido = await strapi.services.pedidos.create(strapiPedido);
 
-        const res = await mercadopago.preferences.create(preference)
+        // Add strapiId to preference.external_identifier
+        preference.external_reference = createdPedido.id.toString()
 
-        return JSON.stringify({PaymentLink: res.body.init_point})
-      },
+        // Fetch preference
+        const mercadoPagoRes = await mercadopago.preferences.create(preference)
+
+        // Return payment link
+        return JSON.stringify({PaymentLink: mercadoPagoRes.body.init_point})
+    },
 };
